@@ -1,12 +1,18 @@
+import os
+
 import requests
+from dotenv import load_dotenv
 
 
 # ============================================================
 # API CONFIGURATION
 # ============================================================
 
+load_dotenv()
+
 DISEASE_API = "https://disease.sh/v3/covid-19"
 USDA_API = "https://api.nal.usda.gov/fdc/v1"
+USDA_API_KEY = os.getenv("USDA_API_KEY", "DEMO_KEY")
 RXNORM_API = "https://rxnav.nlm.nih.gov/REST"
 
 
@@ -53,7 +59,7 @@ def get_disease_statistics(country):
 # 2. USDA FOOD SEARCH
 # ============================================================
 
-def search_food(food_name, api_key="DEMO_KEY"):
+def search_food(food_name, api_key=USDA_API_KEY):
     """
     Search USDA FoodData Central for a food.
     """
@@ -99,7 +105,7 @@ def search_food(food_name, api_key="DEMO_KEY"):
 # 3. GET FOOD DETAILS
 # ============================================================
 
-def get_food_details(fdc_id, api_key="DEMO_KEY"):
+def get_food_details(fdc_id, api_key=USDA_API_KEY):
     """
     Get detailed nutrition information for a food.
     """
@@ -184,7 +190,7 @@ def extract_nutrients(food_data):
 # 5. SEARCH NUTRITION
 # ============================================================
 
-def get_food_nutrition(food_name, api_key="DEMO_KEY"):
+def get_food_nutrition(food_name, api_key=USDA_API_KEY):
     """
     Search for a food and return nutrition information.
     """
@@ -217,7 +223,7 @@ def get_food_nutrition(food_name, api_key="DEMO_KEY"):
 # 6. FOOD COMPARISON
 # ============================================================
 
-def compare_foods(food1, food2, api_key="DEMO_KEY"):
+def compare_foods(food1, food2, api_key=USDA_API_KEY):
     """
     Compare two foods using USDA nutrition information.
     """

@@ -355,6 +355,54 @@ Example:
 
 
 # ============================================================
+# GENERAL HEALTH INFORMATION
+# ============================================================
+
+def general_response(message):
+
+    if "fever" in message.lower():
+        return """
+### Common causes of fever
+
+Fever is a symptom, not a diagnosis. Common causes include viral infections
+(such as colds or flu), bacterial infections, and sometimes reactions to
+medicines or vaccines. Other inflammatory conditions can also cause fever.
+
+The cause cannot be determined from temperature alone. Seek medical advice
+if a fever is severe, persistent, or accompanied by concerning symptoms such
+as trouble breathing, confusion, a stiff neck, or a seizure.
+
+*This is general educational information, not a diagnosis or treatment plan.*
+"""
+
+    return """
+### 👋 Healthcare Research & Wellness Assistant
+
+I can help you with:
+
+🦠 **Disease statistics**
+
+Example:
+> Show COVID-19 statistics for India.
+
+🥗 **Food nutrition**
+
+Example:
+> How much protein is in chickpeas?
+
+💊 **Medicine terminology**
+
+Example:
+> Search medicine paracetamol.
+
+📊 **Food comparison**
+
+Example:
+> Compare rice and oats.
+"""
+
+
+# ============================================================
 # MAIN CHATBOT FUNCTION
 # ============================================================
 
@@ -381,29 +429,4 @@ def chatbot_response(message, api_key):
         return medicine_response(message)
 
     else:
-
-        return """
-### 👋 Healthcare Research & Wellness Assistant
-
-I can help you with:
-
-🦠 **Disease statistics**
-
-Example:
-> Show COVID-19 statistics for India.
-
-🥗 **Food nutrition**
-
-Example:
-> How much protein is in chickpeas?
-
-💊 **Medicine terminology**
-
-Example:
-> Search medicine paracetamol.
-
-📊 **Food comparison**
-
-Example:
-> Compare rice and oats.
-"""
+        return general_response(message)

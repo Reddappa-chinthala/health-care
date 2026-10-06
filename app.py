@@ -1,6 +1,7 @@
 import streamlit as st
 
 from chatbot import chatbot_response
+from api_services import USDA_API_KEY
 
 
 # ============================================================
@@ -76,7 +77,7 @@ with st.sidebar:
 
     api_key = st.text_input(
         "USDA API Key",
-        value="DEMO_KEY",
+        value=USDA_API_KEY,
         type="password"
     )
 
